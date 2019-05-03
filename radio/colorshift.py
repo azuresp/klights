@@ -1,6 +1,7 @@
 from RFM69 import Radio, FREQ_915MHZ
 import datetime
 import time
+import random
 
 node_id = 1
 network_id = 100
@@ -10,25 +11,26 @@ with Radio(FREQ_915MHZ, node_id, network_id, isHighPower=True, verbose=True) as 
     print ("Starting loop...")
     
     rx_counter = 0
-    tx_counter = 0
+    tx_counter = 6
 
     while True:
         
-        # Every 10 seconds get packets
-        if rx_counter > 10:
-            rx_counter = 0
-            
-            # Process packets
-            for packet in radio.get_packets():
-                print (packet)
 
         # Every 5 seconds send a message
         if tx_counter > 5:
             tx_counter=0
 
+
+            r = random.randrange(255).to_bytes(1,byteorder='big')[0]
+            g = random.randrange(255).to_bytes(1,byteorder='big')[0]
+            b = random.randrange(255).to_bytes(1,byteorder='big')[0]
+
+            ba = list([r,g,b])
+
+
             # Send
             print ("Sending")
-            if radio.send(2, "TEST", attempts=3, waitTime=100):
+            if radio.send(2, ba, attempts=3, waitTime=100):
                 print ("Acknowledgement received")
             else:
                 print ("No Acknowledgement")
