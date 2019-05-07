@@ -1,0 +1,8 @@
+FROM jjanzic/docker-python3-opencv
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade imutils
+
+ADD *.jpg /
+ADD *.py /
+CMD ["python3", "./locate.py"]
+
