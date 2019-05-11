@@ -1,2 +1,1 @@
-docker build --network=host -t opencv opencv
-docker build -t scanner scanner
+docker build -t klight-server ./server 

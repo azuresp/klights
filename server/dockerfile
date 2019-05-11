@@ -1,0 +1,8 @@
+FROM sgtwilko/rpi-raspbian-opencv:latest-4.0.1
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade imutils
+
+ADD *.jpg /
+ADD *.py /
+CMD ["python3", "./locate.py"]
+
