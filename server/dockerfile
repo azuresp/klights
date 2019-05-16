@@ -4,5 +4,5 @@ RUN pip3 install --upgrade imutils
 
 ADD *.jpg /
 ADD *.py /
-CMD ["python3", "./locate.py"]
+CMD ["python3", "./locate-continuous.py"]
 

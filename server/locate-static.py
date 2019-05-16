@@ -1,3 +1,7 @@
+# Object location in static image; useful for testing in docker but we
+# need to start exercising continuous feed from pi camera.  Maybe
+# refactor the extractor into a common file?
+
 print("This was run from locate.py")
 
 # import the necessary packages
@@ -12,8 +16,10 @@ image = cv2.imread("/green-ir.jpg")
 start_time = datetime.utcnow()
 gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 blurred = cv2.GaussianBlur(gray, (5, 5), 0)
-#cv2.imwrite("/dump/green-ir-blur.jpg", blurred)
 thresh = cv2.threshold(blurred, 128, 255, cv2.THRESH_BINARY)[1]
+
+#debug dumps
+#cv2.imwrite("/dump/green-ir-blur.jpg", blurred)
 #cv2.imwrite("/dump/green-ir-thresh.jpg", thresh)
 
 # find contours in the thresholded image

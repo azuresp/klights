@@ -1,1 +1,1 @@
-docker run --rm --mount type=bind,source=/tmp/output,destination=/dump -t klight-server 
+docker run --rm --mount type=bind,source=/tmp/output,destination=/dump --device=/dev/vchiq -t klight-server 
