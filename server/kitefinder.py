@@ -1,5 +1,6 @@
 import imutils
 import cv2
+import datetime
 
 def find_kite(image):
     #cv2.imshow("#preview", image)
@@ -33,6 +34,6 @@ def find_kite(image):
         if M["m00"]!=0:
             cX = int(M["m10"] / M["m00"])
             cY = int(M["m01"] / M["m00"])
-            print(str(cX) + ', ' + str(cY))
+            print(str(datetime.datetime.now()) + ' - ' + str(cX) + ', ' + str(cY))
         else:
             print("We're missing stuff - change the threshold?")
