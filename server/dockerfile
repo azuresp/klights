@@ -1,9 +1,12 @@
-FROM sgtwilko/rpi-raspbian-opencv:latest-4.0.1
-RUN pip3 install --upgrade pip
+FROM balenalib/raspberrypi3:latest
+RUN apt-get update
+RUN apt-get upgrade -y
+RUN apt-get install -y \
+  python3-dev \
+  python3-pip
 RUN pip3 install --upgrade imutils
 RUN pip3 install rpi-RFM69
 
-ADD *.jpg /
 ADD *.py /
-CMD ["python3", "./locate-continuous.py"]
+CMD ["python3", "./main.py"]
 
